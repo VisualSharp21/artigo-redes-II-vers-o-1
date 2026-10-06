@@ -1,0 +1,129 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{capt-of} % Necessário para usar legendas fora do ambiente figure
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\begin{document}
+
+\title{Conference Paper Title*\\
+{\footnotesize \textsuperscript{*}Note: Sub-titles are not captured in Xplore and
+should not be used}
+\thanks{Identify applicable funding agency here. If none, delete this.}
+}
+
+\author{\IEEEauthorblockN{1\textsuperscript{st} Given Name Surname}
+\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
+\textit{name of organization (of Aff.)}\\
+City, Country \\
+email address or ORCID}
+\and
+\IEEEauthorblockN{2\textsuperscript{nd} Given Name Surname}
+\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
+\textit{name of organization (of Aff.)}\\
+City, Country \\
+email address or ORCID}
+\and
+\IEEEauthorblockN{3\textsuperscript{rd} Given Name Surname}
+\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
+\textit{name of organization (of Aff.)}\\
+City, Country \\
+email address or ORCID}
+\and
+\IEEEauthorblockN{4\textsuperscript{th} Given Name Surname}
+\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
+\textit{name of organization (of Aff.)}\\
+City, Country \\
+email address or ORCID}
+\and
+\IEEEauthorblockN{5\textsuperscript{th} Given Name Surname}
+\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
+\textit{name of organization (of Aff.)}\\
+City, Country \\
+email address or ORCID}
+\and
+\IEEEauthorblockN{6\textsuperscript{th} Given Name Surname}
+\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
+\textit{name of organization (of Aff.)}\\
+City, Country \\
+email address or ORCID}
+}
+
+\maketitle
+
+\begin{abstract}
+This document is a model and instructions for \LaTeX.
+This and the IEEEtran.cls file define the components of your paper [title, text, heads, etc.]. *CRITICAL: Do Not Use Symbols, Special Characters, Footnotes, 
+or Math in Paper Title or Abstract.
+\end{abstract}
+
+\begin{IEEEkeywords}
+component, formatting, style, styling, insert
+\end{IEEEkeywords}
+
+\section{Introduction}
+A internet depende fortemente da capacidade de roteamento de dados, sendo o OSPF, RIP, IS-IS e EIGRP alguns dos protocolos de roteamento mais populares. O artigo analisado foca especificamente no OSPF, um protocolo de estado de link amplamente utilizado em redes IP para gerenciar o roteamento intre-domínio. Segundo os autores, o OSPF utiliza o custo da rota para determinar o caminho mais rápido através da rede, calculando esse custo por meio do algoritmo Shortest Path Firs(SPF), baseado no algoritmo de Dijktra. O objetivo central do artigo é calcular o tempo de convergência do protocolo OSPF um cenário de falha e recuperação. A justificava dos autores baseia=se no fato de que aplicações multimídia são sensíveis ao tempo, exigindo que os protocolos sejam confiáveis, seguros e tenha convergência rápida. No entanto, os autores não definem qual mutimídia estão abordando. Ademais, nota-se desde a introdução uma flagrante falta de linha de base. Embora o texto compare o OSPF com protocolos como RIP e EIGRP, nenhum destes é simulado, impossibilitando afirmar que o OSPF possui um desempenho superior. O embasamento teórico também apresenta imprecisões e qualidade de escrita questionável: os autores cometem erros tipográficos graves como "OSPF (RIP)", referenciam manuais não científicos e omitem a RFC 2328, que é a base oficial do OSPF. Por fim, a Tabela I do artigo original chega a afirmar que o tempo de convergência "não é um problema" em protocolos de vetor de distância, sendo esta, é a sua maior fraqueza teórica.
+
+\section{Desenvolvimento/proposta}
+
+\subsection{Arquitetura}
+Os autores definiram uma arquitetura algorítmica para o experimento, a proposta desenvolve-se na configuração de uma rede LAN baseada em Ethernet com design física OSPF:\\
+\textbf{Simulador} : OPNET MODELER Academics edition versão 17.5\\
+\textbf{Hardware simulado: }Roteadores do tipo "Ethernet4slip8getwy_dv"\\
+\textbf{Topologia e Escala:} Rede do tipo Campus, em uma escala de 10Km x 10Km, utilizando a família de endereços IPv4.\\
+Tempo de simulação: 10 miniutos no total, sendo configurado um tempo total de 100 segundos para cada cenário específico.\\
+
+O artigo propõe três modelos distintos no mesmo cenário de rede:
+
+\begin{center}
+    \includegraphics[width=0.48\textwidth]{modelo1.png}
+    \captionof{figure}{Figura 1: Um modelo link OSPF Básico. Fonte: Gilbert e Musa(2021)}
+\end{center}
+
+\begin{center}
+    \includegraphics[width=0.48\textwidth]{Modelo2.png}
+    \captionof{figure}{Figura 2: Um modelo de redistribuição de rotas no protocolo OSPF, utilizando roteadores de borda configurados para disseminar o fluxo de tráfego IP. Fonte: Gilbert e Musa(2021)}
+\end{center}
+
+\begin{center}
+    \includegraphics[width=0.48\textwidth]{modelo3.png}
+    \captionof{figure}{Figura 3: Uma topologia de falha de enfileiramento de link. Fonte: Gilbert e Musa(2021)}
+\end{center}
+
+A metodologia é bem delineada no que diz respeito as ferramentas. O uso de dados de falha e recuperação predefinidos é muito bom para testar o estresse da rede. No entanto, a descrição dos cenários no texto original é as vezes superficial, deixando o leitor depedente da interpretação das tabelas para entender completamente a dinâmica da injeção de falhas.\\
+Embora os autores documentarem bem a topologia e as tabelas de falhas de link, o artigo omite a matriz de tráfego. Não sabemos se eles usaram pacotes TCP, UDP, qual o tamanho do payload (MTU) ou a taxa de injeção de pacotes por segundo.
+
+\subsection{Inconsistências Internas e Estruturais da Proposta}
+A modelagem do experimento apresenta severas contradições internas. Primeiramente, o resumo cita a avaliação de seis roteadores, mas as figuras ilustram oito nós (RA a RH) dispostos em uma topologia não trivial. O controle de tempo da simulação é igualmente confuso: o texto afirma que cada cenário dura 100 segundos, porém a Tabela II indica 10 minutos e a tabela de falhas detalha eventos até a marca de 1440 segundos.\\
+Outra falha metodológica crítica encontra-se nas especificações físicas e conceituais do experimento. Os links são definidos como 100BaseT operando a 100 Mbps em uma rede Campus com escala de 10 Km, o que ultrapassa absurdamente o limite físico de alcance desse padrão (que é de 100 metros). Além disso, os autores mencionam realizar uma "redistribuição de rotas" dentro do próprio OSPF. Teoricamente, redistribuição é uma técnica aplicada entre protocolos distintos (ex: OSPF para EIGRP). Como os autores não definiram números de Área OSPF nem configuraram Roteadores de Borda de Área (ABRs), o conceito de "área balanceada" e "redistribuição" torna-se tecnicamente infundado no cenário exposto.
+
+\section{Avaliação de Desempenho}
+
+\begin{center}
+    \includegraphics[width=0.48\textwidth]{figura6.png}
+    \captionof{figure}{Figura 4: Duração da convergência da rede. Fonte: Gilbert e Musa(2021).}
+\end{center}
+
+\begin{center}
+    \includegraphics[width=0.48\textwidth]{figura7.png}
+    \captionof{figure}{Figura 5: Queda na atividade de convergência no link. Fonte: Gilbert e Musa(2021)}
+\end{center}
+
+\begin{center}
+    \includegraphics[width=0.48\textwidth]{figura8.png}
+    \captionof{figure}{Figura 6: Balanceador de carga de enfileiramento no link entre RC e RH. Fonte: Gilbert e Musa (2021)}
+\end{center}
+
+Os resultados obtidos, os gráficos demonstram a atividade de convergência da rede OSPF e o tempo de duração da convergência em segundos. Os resultados mostram que o OSPF na área de balanceamento teve um desempenho superior na determinação do caminho mais curto para transmissões de fluxo de tráfego após a falha do link, lidando com um atraso de 100 segundos e fornecendo duas rotas alternativas do roteador de origem para o de destino. O artigo mostra a latência gerada e o atraso de enfileiramento durante as quedas.\\
+Embora os gráficos gerados pelo OPNET comprovem o funcionamento da rede, os autores poderiam ter aprofundado a discussão numérica. Eles afirmam que o protocolo "teve um desempenho superior", mas como o trabalho avalia apenas o OSPF, falta uma base comparativa submetida ao mesmo estresse para comprovar a superioridade de desempenho.
+
+\section{Conclusão}
+Em suma, o artigo atinge o objetivo de comprovar que os métodos de roteamento de estado de link (OSPF) conseguem suportar várias falhas nos links da rede. Os autores concluem corretamente que o modelo OSPF pode suportar a flutuação do link de rede entre falha e recuperação, o que o torna perfeitamente adequado para aplicações em tempo real. O artigo é um bom estudo de caso sobre simulação de redes usando o OPNET. A configuração detalhada de custos de interface e injeção programada de falhas demonstra robustez na experimentação. Para trabalhos futuros, seria interessante expandir este modelo para redes IPv6 e comparar lado a lado o tempo de convergência com protocolos de vetor de distância nas mesmas condições.\\
+A conclusão afirma categoricamente que o modelo OSPF sobrevive à flutuação de links e é adequado para aplicações de tempo real. Esta é uma alegação perigosa baseada nos próprios dados deles. Se uma rede leva 10 a 20 segundos para convergir, qualquer aplicação real-time rigorosa (como controle industrial, telemetria ou comunicação de voz) já terá derrubado a sessão por timeout muito antes da rede se recuperar. O OSPF funcionou na simulação, mas o tempo de convergência apresentado não serve para as exigências críticas atuais.
+
+\end{document}
